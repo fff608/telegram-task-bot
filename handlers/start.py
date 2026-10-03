@@ -41,9 +41,9 @@ async def add_task(message: Message):
         "Скоро я научусь добавлять задачи. Пока — просто кнопка работает.",
         reply_markup=main_menu_keyboard(),
     )
-@router.message(F.text.lower().contains("свинная туша"))
+@router.message(F.text.lower().contains("Привет"))
 async def add_task(message: Message):
     await message.answer(
-        "Сам ты свинная туша",
+        "Привет",
         reply_markup=main_menu_keyboard(),
     )
