@@ -9,7 +9,6 @@ def main_menu_keyboard() -> ReplyKeyboardMarkup:
             [
                 KeyboardButton(text="➕ Добавить задачу"),
                 KeyboardButton(text="ℹ️ Помощь"),
-                KeyboardButton(text="Свинная туша"),
             ],
         ],
         resize_keyboard=True,
