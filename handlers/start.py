@@ -1,10 +1,32 @@
 from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.types import Message, ReplyKeyboardRemove
+from aiogram.types  import CallbackQuery
+from aiogram.utils import callback_answer
 
-from handlers.keyboards import main_menu_keyboard
+from handlers.keyboards import main_menu_keyboard,main_menu_inline_keyboard
 
 router = Router()
+
+@router.message(F.text == "📋 Мои задачи")
+async def show_tasks(message: Message):
+    await message.answer(
+        "Выбери действие:",
+        reply_markup=main_menu_inline_keyboard(),
+    )
+
+
+@router.callback_query(F.data=="add_task")
+async def add_task(callback: CallbackQuery):
+    await callback.answer()
+    await callback.message.edit_text("Тут ты сможешь добавлять задачи.Скоро.")
+@router.callback_query(F.data=="task_delete")
+async def task_delete(callback: CallbackQuery):
+    await callback.answer()
+    await callback.message.edit_text("Тут ты можешь удалять задачи.")
+
+
+
 
 
 @router.message(Command("start"))
@@ -34,16 +56,3 @@ async def show_tasks(message: Message):
         reply_markup=main_menu_keyboard(),
     )
 
-
-@router.message(F.text == "➕ Добавить задачу")
-async def add_task(message: Message):
-    await message.answer(
-        "Скоро я научусь добавлять задачи. Пока — просто кнопка работает.",
-        reply_markup=main_menu_keyboard(),
-    )
-@router.message(F.text.lower().contains("Привет"))
-async def add_task(message: Message):
-    await message.answer(
-        "Привет",
-        reply_markup=main_menu_keyboard(),
-    )
