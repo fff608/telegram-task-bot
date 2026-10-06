@@ -5,7 +5,7 @@
 
 ## Status
 
- M**Work in progress.**.** The bot currently has a working menu and command handlers. Task manageme>
+ Work in progress.The bot currently has a working menu and command handlers. Task manageme
 
 ## Tech stack
 
